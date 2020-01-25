@@ -1,0 +1,25 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-size: 0;
+}
+
+.container {
+	padding: 0 50px;
+	margin: 100px auto;
+}
+
+.hexagone {
+	position: absolute;
+	width: 96px;
+	height: 55px;
+	background: red;
+}
+
+.diag1 {
+	transform:rotate(60deg);
+}
+
+.diag2 {
+	transform:rotate(120deg);
+}

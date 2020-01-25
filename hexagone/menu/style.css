@@ -1,0 +1,60 @@
+html, body {
+	padding:0;
+	margin:0;
+	font-size:0;
+}
+
+.menu {
+	margin:100px;
+}
+
+.hexagone {
+	position:relative;
+	width:120px;
+	height:75px;
+	background:black;
+	font-size:20px;	
+	color:white;
+}
+
+.hexagone:before {
+	content:""; 
+	position:absolute; 
+	top:-25px; 
+	left:0; 
+	width:0; 
+	height:0; 
+	border-left:60px solid transparent; 
+	border-right:60px solid transparent; 
+	border-bottom:25px solid black; 		
+}
+
+.hexagone:after {
+	content:""; 
+	position:absolute; 
+	bottom:-25px; 
+	left:0; 
+	width:0; 	
+	height:0; 
+	border-left:60px solid transparent; 
+	border-right:60px solid transparent; 
+	border-top:25px solid black; 		
+}
+
+.hexagone:nth-child(odd) {
+	margin-bottom:28px;
+}
+
+.hexagone:nth-child(even) {
+	margin-left:60px;
+	margin-bottom:28px;
+}
+
+/* équivalent à line-height mais fonctionne avec plusieurs lignes */
+.hexagone span {
+	display:table-cell;
+	width:inherit;
+	height:inherit;
+	vertical-align:middle;
+	text-align:center;
+}

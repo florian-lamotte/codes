@@ -1,0 +1,45 @@
+#perso {
+	position: absolute;
+	width: 100px;
+	height: auto;
+}
+
+#bulle {
+	display: table-cell; /* nécessaire pour aligner verticalement le texte */
+	position: relative;
+	left: 150px;
+	background-color: white;
+	text-align: center;
+	vertical-align: middle;
+	width: 200px;
+	height: 80px;
+	border: 2px solid black;
+	border-top-right-radius:120px 50px;
+	border-top-left-radius:120px 50px;
+	border-bottom-right-radius:120px 50px;
+	border-bottom-left-radius:120px 50px;
+}
+
+#triangle {
+	position: absolute;
+	top: 54px;
+	right: 171px;
+ 	height: 0;
+ 	width: 0;
+ 	border-top: 15px solid transparent;
+ 	border-right: 15px solid black;
+ 	border-bottom: 40px solid transparent;
+ 	transform:rotate(62deg);
+}
+
+#bordure_triangle {
+	position: absolute;
+	top: 47px;
+	right: 162px;
+ 	height: 0;
+ 	width: 0;
+ 	border-top: 15px solid transparent;
+ 	border-right: 15px solid white;
+ 	border-bottom: 40px solid transparent;
+ 	transform:rotate(62deg);
+}

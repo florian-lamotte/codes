@@ -1,0 +1,33 @@
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+table {
+   	border-collapse:collapse;
+    width:1000px;
+    height:1000px;
+    margin:auto;
+    border:2px solid black;
+    transform:rotateX(60deg) rotateY(0deg) rotateZ(45deg);
+}
+
+td {
+    border:1px solid black;
+    width:60px;
+    height:60px;
+}
+
+tr:nth-child(odd) td:nth-child(odd) {
+ 	background-color:white;
+}
+tr:nth-child(odd) td:nth-child(even) {
+ 	background-color:black;
+}
+tr:nth-child(even) td:nth-child(odd) {
+ 	background-color:black;
+}
+tr:nth-child(even) td:nth-child(even) {
+ 	background-color:white;
+}

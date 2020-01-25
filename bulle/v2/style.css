@@ -1,0 +1,54 @@
+#perso {
+	position: absolute;
+	width: 100px;
+	height: auto;
+}
+
+#bulle {
+	display: table-cell; /* nécessaire pour aligner verticalement le texte */
+	position: relative;
+	left: 150px;
+	background-color: white;
+	text-align: center;
+	vertical-align: middle;
+	width: 200px;
+	height: 80px;
+	border: 2px solid black;
+	border-radius: 100px;
+}
+
+#fleche span {
+	content: "";
+	position: absolute;
+	display:block;
+	width: 0;
+	border-style: solid;
+}
+
+#bordure_droite {
+	bottom: -30px;
+	left: 40px;
+ 	border-width: 0 0 30px 50px;
+ 	border-color: transparent black;
+}
+
+#masque1 {
+	bottom: -30px;
+	left: 40px;
+ 	border-width: 0 0 30px 44px;
+ 	border-color: transparent white;
+}
+
+#bordure_gauche {
+	bottom: -30px;
+	left: 40px;
+ 	border-width: 0 0 30px 20px;
+ 	border-color: transparent black;
+}
+
+#masque2 {
+	bottom: -32px;
+	left: 39px;
+ 	border-width: 0 0 30px 16px;
+ 	border-color: transparent white;
+}

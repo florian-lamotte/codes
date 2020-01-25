@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex</title>
+	<style type="text/css">
+		html, body {
+			margin:0;
+			padding:0;
+			font-size:0;
+		}
+
+		#container {
+			display:flex;
+			flex-wrap:wrap; /* retour à la ligne */
+			align-content:flex-start;
+			margin:auto;
+			width:1200px;
+			height:100vh;
+			background-color:salmon;
+		}
+
+		.texte {
+			width:181px;
+			height:200px;
+			background-color:white;
+			margin:6px 0 0 6px;
+			padding:6px;
+			font-size:20px;
+		}
+
+		.texte:first-letter {
+			display:block;
+		    float:left;
+		    margin:3px 3px 0 3px;
+		    color:#f00;
+		    font-size:300%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="texte">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+		<div class="texte">Suspendisse venenatis lorem ac lectus rhoncus, sit amet mattis ante efficitur.</div>
+		<div class="texte">Nullam faucibus lectus sit amet eros porttitor molestie.</div>
+		<div class="texte">Mauris accumsan quam a tristique dictum.</div>
+		<div class="texte">Curabitur et purus porta enim congue mollis.</div>
+		<div class="texte">Nulla ultricies nunc eu tellus auctor bibendum.</div>
+		<div class="texte">Nulla mattis massa quis convallis dictum.</div>
+		<div class="texte">Aenean iaculis nulla sit amet arcu sollicitudin efficitur.</div>
+		<div class="texte">Quisque eu risus quis arcu lacinia auctor.</div>
+	</div>
+</body>
+</html>

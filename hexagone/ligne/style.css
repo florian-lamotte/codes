@@ -1,0 +1,50 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-size: 0;
+}
+
+.container {
+	padding: 0 50px;
+	margin: 100px auto;
+}
+
+.hexagone {
+	display: inline-block;
+	position: relative;
+	width: 100px;
+	height: 55px;
+	background: red;
+	margin-right: 4px;
+}
+
+.hexagone::before {
+	content: "";
+	position: absolute;
+	top: -25px;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 25px solid red;
+}
+
+.hexagone::after {
+	content: "";
+	position: absolute;
+	bottom: -25px;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 25px solid red;
+}
+
+.ligne_hexagone {
+	margin-bottom: 29px;
+}
+
+.ligne_hexagone2 {
+	margin-left: 52px;
+	margin-bottom: 29px;
+}
