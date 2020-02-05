@@ -36,7 +36,52 @@ function recherche($array, $recherche, $i = 0){
 	}
 }
 
+function croissant($array, $i = 0){
+	if(isset($array[$i])){
+		for($j = 0; $j < count($array); $j++){
+			if($array[$i] < $array[$j]){
+				$temp = $array[$j];
+				$array[$j] = $array[$i];
+				$array[$i] = $temp;
+			}
+		}
+		
+		croissant($array, $i + 1);
+	} else {
+		for($t = 0; $t < count($array); $t++){
+			echo $array[$t];
+		}
+	}
+}
+
+function decroissant($array, $i = 0){
+	if(isset($array[$i])){
+		for($j = 0; $j < count($array); $j++){
+			if($array[$i] > $array[$j]){
+				$temp = $array[$j];
+				$array[$j] = $array[$i];
+				$array[$i] = $temp;
+			}
+		}
+		
+		decroissant($array, $i + 1);
+	} else {
+		for($t = 0; $t < count($array); $t++){
+			echo $array[$t];
+		}
+	}
+}
+
+function tri($array, $tri){
+	if($tri == 'croissant'){
+		croissant($array);
+	} else if($tri == 'decroissant'){
+		decroissant($array);
+	}
+}
+
 $array = [1,2,3];
+$array2 = [2,8,4,3,9,6,5,1,7];
 
 echo 'Tableau: ';
 affichage($array);
@@ -56,4 +101,12 @@ echo '<br>';
 
 echo 'Recherche infructueuse: ';
 recherche($array, 4);
+echo '<br>';
+
+echo 'Tri croissant: ';
+tri($array2, 'croissant');
+echo '<br>';
+
+echo 'Tri décroissant: ';
+tri($array2, 'decroissant');
 echo '<br>';
