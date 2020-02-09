@@ -1,0 +1,155 @@
+/* reset css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* fin reset */
+
+ul {
+	margin-bottom:15px;
+}
+
+ul li {
+	display:inline-block;
+}
+
+#container {
+	margin:20px 10%;
+}
+
+#container form {
+	margin-bottom:15px;
+}
+
+#container textarea {
+	width:90%;
+	max-width:90%;
+	height:100px;
+    box-sizing:border-box;
+    float:left;
+}
+
+#container input[type=submit]{
+	width:10%;
+	height:102px;
+}
+
+.contenu {
+	width:100%;
+	columns:5;
+}
+
+.contenu div {
+	border:1px solid black;
+	margin-bottom:5px;
+	padding:5px;
+	overflow:hidden;
+	word-wrap:break-word;
+	min-height:50px;
+}
+
+.contenu div p {
+	display:inline-block;
+	width:94%;
+}
+
+.contenu div p img {
+	width:100%;
+}
+
+.sup {
+	display:inline-block;
+	float:right;
+	vertical-align:top;
+	width:6%;
+	cursor:pointer;
+}
+
+@media screen and (max-width: 1300px){
+	.contenu {
+		columns:4;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	.contenu {
+		columns:3;
+	}
+}
+
+@media screen and (max-width: 700px){
+	#container textarea {
+		width:80%;
+		max-width:80%;
+		height:100px;
+	    box-sizing:border-box;
+	    float:left;
+	}
+
+	#container input[type=submit]{
+		width:20%;
+		height:102px;
+	}
+
+	.contenu {
+		columns:2;
+	}
+}
+
+@media screen and (max-width: 400px){
+	#container textarea {
+		width:75%;
+		max-width:75%;
+		height:100px;
+	    box-sizing:border-box;
+	    float:left;
+	}
+
+	#container input[type=submit]{
+		width:25%;
+		height:102px;
+	}
+
+	.contenu {
+		columns:1;
+	}
+}
