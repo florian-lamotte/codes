@@ -1,0 +1,6 @@
+[
+	{"titre":"film 1","annee":"2017","theme":["comique","aventure","action"]},
+	{"titre":"film 2","annee":"2016","theme":["comique","fantasy"]},
+	{"titre":"film 3","annee":"2016","theme":["fantasy","thriller"]},
+	{"titre":"film 4","annee":"2018","theme":["fantasy","horreur","action"]}
+]
