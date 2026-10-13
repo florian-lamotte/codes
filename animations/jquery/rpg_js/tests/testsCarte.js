@@ -116,6 +116,48 @@ test("Une destination réservée est inaccessible", () => {
     verifier(!carte.estAccessible(1, 0));
 });
 
+test("La case de départ reste occupée pendant un déplacement", () => {
+    const carte = creerCarteTest();
+
+    carte.addPersonnage({
+        x: 1,
+        y: 0,
+        deplacement: {
+            departX: 0,
+            departY: 0,
+            arriveeX: 1,
+            arriveeY: 0,
+            debut: 100
+        }
+    });
+
+    verifier(
+        !carte.estAccessible(0, 0),
+        "La case de départ doit rester occupée."
+    );
+});
+
+test("La destination reste occupée pendant un déplacement", () => {
+    const carte = creerCarteTest();
+
+    carte.addPersonnage({
+        x: 1,
+        y: 0,
+        deplacement: {
+            departX: 0,
+            departY: 0,
+            arriveeX: 1,
+            arriveeY: 0,
+            debut: 100
+        }
+    });
+
+    verifier(
+        !carte.estAccessible(1, 0),
+        "La destination doit rester réservée."
+    );
+});
+
 test("Un personnage ne peut pas être ajouté deux fois", () => {
     const carte = creerCarteTest();
 
@@ -186,6 +228,17 @@ test("Une tuile absente du tileset est refusée", () => {
     }
 
     verifier(erreurDetectee);
+});
+
+test("Une tuile bloquante absente du tileset est refusée", async () => {
+    await verifierErreur(
+        () => Carte.validerTuilesTerrain(
+            [[1]],
+            { largeur: 2, hauteur: 2 },
+            [5]
+        ),
+        "tuiles bloquantes"
+    );
 });
 
 test("Les tuiles sont dessinées aux bonnes coordonnées", () => {
@@ -412,7 +465,7 @@ test("Une carte utilisant une tuile inexistante est refusée", async () => {
 
 test("Le nom de la carte est encodé dans l'URL", async () => {
     const ancienneFetch = globalThis.fetch;
-    let urlDemandee = "";
+    let urlDemandee = null;
 
     try {
         globalThis.fetch = async url => {
@@ -430,8 +483,13 @@ test("Le nom de la carte est encodé dans l'URL", async () => {
         );
 
         verifier(
-            urlDemandee === "./maps/ma%20carte.json",
-            `URL inattendue : ${urlDemandee}`
+            urlDemandee instanceof URL,
+            "Une URL valide était attendue."
+        );
+
+        verifier(
+            urlDemandee.pathname.endsWith("/maps/ma%20carte.json"),
+            `URL inattendue : ${urlDemandee.href}`
         );
     } finally {
         globalThis.fetch = ancienneFetch;
@@ -495,7 +553,10 @@ test("Un tileset valide est chargé et ses dimensions sont calculées", async ()
 
         verifier(tileset.largeur === 4);
         verifier(tileset.hauteur === 2);
-        verifier(tileset.image.url === "tilesets/terrain.png");
+        verifier(
+            tileset.image.url.endsWith("/tilesets/terrain.png"),
+            `URL inattendue : ${tileset.image.url}`
+        );
     } finally {
         globalThis.Image = AncienneImage;
     }

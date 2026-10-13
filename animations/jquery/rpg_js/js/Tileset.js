@@ -1,4 +1,5 @@
 import { TAILLE_TUILE } from "./config.js";
+import { urlTileset } from "./ressources.js";
 
 export class Tileset {
     constructor(url) {
@@ -63,7 +64,7 @@ export class Tileset {
                 );
             };
 
-            this.image.src = `tilesets/${this.url}`;
+            this.image.src = urlTileset(this.url).href;
         });
     }
 

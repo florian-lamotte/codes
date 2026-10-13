@@ -1,4 +1,5 @@
 import { TAILLE_TUILE } from "./config.js";
+import { urlCarte } from "./ressources.js";
 import { Tileset } from "./Tileset.js";
 
 export class Carte {
@@ -27,15 +28,15 @@ export class Carte {
 
         this.validerTuilesTerrain(
             donnees.terrain,
-            tileset
+            tileset,
+            donnees.tuilesBloquantes ?? []
         );
 
         return new Carte(donnees, tileset);
     }
 
     static async chargerDonnees(nom) {
-        const url = `./maps/${encodeURIComponent(nom)}.json`;
-        const reponse = await fetch(url);
+        const reponse = await fetch(urlCarte(nom));
 
         if (!reponse.ok) {
             throw new Error(
@@ -95,17 +96,21 @@ export class Carte {
         }
     }
 
-    static validerTuilesTerrain(terrain, tileset) {
-        const nombreTuiles =
-            tileset.largeur * tileset.hauteur;
+    static validerTuilesTerrain(terrain, tileset, tuilesBloquantes = []) {
+        const nombreTuiles = tileset.largeur * tileset.hauteur;
 
-        const tuileInvalide = terrain.some(ligne =>
-            ligne.some(numero => numero > nombreTuiles)
-        );
+        const numeroInvalide = numero =>
+            numero > nombreTuiles;
 
-        if (tuileInvalide) {
+        if (terrain.some(ligne => ligne.some(numeroInvalide))) {
             throw new Error(
                 "La carte utilise des tuiles absentes du tileset."
+            );
+        }
+
+        if (tuilesBloquantes.some(numeroInvalide)) {
+            throw new Error(
+                "La liste des tuiles bloquantes contient une tuile absente du tileset."
             );
         }
     }
@@ -189,7 +194,20 @@ export class Carte {
     }
 
     occupeCaseActuelle(personnage, x, y) {
-        return personnage.x === x && personnage.y === y;
+        if (personnage.x === x && personnage.y === y) {
+            return true;
+        }
+
+        const deplacement = personnage.deplacement;
+
+        if (deplacement == null) {
+            return false;
+        }
+
+        return (
+            deplacement.departX === x &&
+            deplacement.departY === y
+        );
     }
 
     occupeCaseReservee(personnage, x, y) {
@@ -209,9 +227,9 @@ export class Carte {
     // AFFICHAGE DE LA CARTE
     // ==================================================
 
-    dessinerMap(context) {
+    dessinerMap(context, maintenant = performance.now()) {
         this.dessinerTerrain(context);
-        this.dessinerPersonnages(context);
+        this.dessinerPersonnages(context, maintenant);
     }
 
     dessinerTerrain(context) {
@@ -236,9 +254,9 @@ export class Carte {
         );
     }
 
-    dessinerPersonnages(context) {
+    dessinerPersonnages(context, maintenant) {
         for (const personnage of this.personnages) {
-            personnage.dessinerPersonnage(context);
+            personnage.dessinerPersonnage(context, maintenant);
         }
     }
 }

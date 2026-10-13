@@ -5,6 +5,7 @@ import {
     NOMBRE_IMAGES_ANIMATION,
     DUREE_FILE_COMMANDES
 } from "./config.js";
+import { urlSprite } from "./ressources.js";
 
 export class Personnage {
     constructor(url, x, y, direction) {
@@ -57,7 +58,7 @@ export class Personnage {
                 );
             };
 
-            this.image.src = `sprites/${this.url}`;
+            this.image.src = urlSprite(this.url).href;
         });
     }
 
@@ -257,10 +258,7 @@ export class Personnage {
     // DESSIN DU PERSONNAGE
     // ================================================
 
-    dessinerPersonnage(
-        context,
-        maintenant = performance.now()
-    ) {
+    dessinerPersonnage(context, maintenant = performance.now()) {
         if (!this.spriteEstPret()) {
             return;
         }
