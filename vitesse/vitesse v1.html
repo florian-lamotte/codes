@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vitesse</title>
+</head>
+<body>
+
+<div id="vitesse"></div>
+
+<script type="text/javascript">
+	var vitesse_max = 200;
+	var vitesse_minimum = 0;
+	var vitesse = 0; // immobile par défaut
+	var press = false; // touche relachée par défaut
+
+	function loop(){
+		requestAnimationFrame(loop);
+
+		if(press){
+			acceleration();
+		} else {
+			deceleration();
+		}
+		
+		document.getElementById("vitesse").innerText = vitesse;
+	}
+	
+	function acceleration(){
+		if(vitesse < vitesse_max){
+			vitesse ++;
+		} else {
+			vitesse = vitesse_max;
+		}
+	}
+
+	function deceleration(){
+		if(vitesse > vitesse_minimum){
+			vitesse -= 2;
+		} else {
+			vitesse = 0;
+		}
+	}
+
+	document.addEventListener('keydown', function(e){
+		if(e.keyCode === 38){
+			press = true; // flèche haut pressée
+		}
+	});
+
+	document.addEventListener('keyup', function(e){
+		press = false;
+	});
+
+	loop();
+</script>
+</body>
+</html>

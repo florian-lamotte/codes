@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vitesse</title>
+</head>
+<body>
+
+<div id="vitesse"></div>
+
+<script type="text/javascript">
+	var vitesse_max = 200;
+	var vitesse_minimum = 0;
+	var vitesse = 0;
+	var acc = 1;
+	var dec = 1;
+
+	document.getElementById("vitesse").innerText = vitesse;
+
+	function acceleration(){
+		if(vitesse < vitesse_max){
+			vitesse = vitesse + acc;
+		} else {
+			vitesse = vitesse_max;
+		}
+
+		document.getElementById("vitesse").innerText = vitesse;
+	}
+
+	function deceleration(){
+		if(vitesse > vitesse_minimum){
+			vitesse = vitesse - dec;
+
+			requestAnimationFrame(deceleration);
+		} else {
+			vitesse = 0;
+		}
+
+		document.getElementById("vitesse").innerText = vitesse;
+	}
+
+	document.addEventListener('keydown', function(e){
+		if(e.keyCode === 38){
+			requestAnimationFrame(acceleration);
+		}
+	});
+
+	document.addEventListener('keyup', function(e){
+		deceleration();
+	});
+</script>
+</body>
+</html>
