@@ -1,0 +1,44 @@
+body {
+  padding:0;
+  margin:0;
+  font-family:Georgia, "Times New Roman", Times, serif;
+  color:#555;
+}
+
+.navigation-gauche {
+  margin:80px 0 20px;
+  text-align:right;
+}
+
+.navigation-droite {
+  margin:80px 0 20px;
+}
+
+ul {
+  list-style:none;
+  padding:0;
+}
+
+li {
+  font-size:18px;
+}
+
+.item {
+  margin-bottom:25px;
+}
+
+.actif {
+  background-color:blue;
+}
+
+@media screen and (max-width:1200px){
+  .item {
+    width:25%;
+  }
+}
+
+@media screen and (max-width:900px){
+  .item {
+    width:33.33333333%;
+  }
+}
